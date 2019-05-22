@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { newMessage } from '../state/actions'
+import { useAppContext } from './hooks'
 
-export default function PublishMessage({ dispatch }){
+export default function PublishMessage(){
   const [text, setText] = useState('')
+  const { dispatch } = useAppContext()
 
   const updateText = ev => {
     setText(ev.target.value)
