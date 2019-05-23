@@ -2,19 +2,21 @@ import PubNub from 'pubnub'
 import pubnubConfig from './pubnub.config'
 // https://www.udemy.com/react-hooks-tutorial/learn/lecture/13743046#overview
 
-const pubnub = new PubNub(pubnubConfig)
-
 export const MESSAGE_CHANNEL = 'MESSAGE_CHANNEL'
 
-pubnub.subscribe({ channels: [MESSAGE_CHANNEL] })
+export default function PubSub() {
+  const pubnub = new PubNub(pubnubConfig)
+  pubnub.subscribe({ channels: [MESSAGE_CHANNEL] })
 
-pubnub.addListener({
-  message: messageObject => {
-    console.log('messageObject', messageObject)
+  this.addListener = listenerConfig => {
+    pubnub.addListener(listenerConfig)
   }
-})
 
-pubnub.publish({
-  message: 'foo',
-  channel: MESSAGE_CHANNEL
-})
+  this.publish = message => {
+    console.log('pub message', message)
+    pubnub.publish({
+      message,
+      channel: MESSAGE_CHANNEL
+    })
+  }
+}

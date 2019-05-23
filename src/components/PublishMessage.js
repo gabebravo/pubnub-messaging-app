@@ -3,15 +3,15 @@ import { newMessage } from '../state/actions'
 import { useAppContext } from './hooks'
 
 export default function PublishMessage(){
+  const { pubsub: { publish } } = useAppContext()
   const [text, setText] = useState('')
-  const { dispatch } = useAppContext()
 
   const updateText = ev => {
     setText(ev.target.value)
   }
 
   const publishMessage = () => {
-    dispatch(newMessage(text))
+    publish(newMessage(text))
     setText('')
   }
 
