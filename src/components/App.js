@@ -19,6 +19,7 @@ function App() {
         console.log('channel', channel)
         console.log('Recieved message', message)
 
+      // This will dispatch the message directly to the reducer
         dispatch(message)
       }
     })
