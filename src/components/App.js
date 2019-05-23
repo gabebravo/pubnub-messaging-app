@@ -18,6 +18,8 @@ function App() {
         const { channel, message } = messageObject
         console.log('channel', channel)
         console.log('Recieved message', message)
+
+        dispatch(message)
       }
     })
   }, [])
