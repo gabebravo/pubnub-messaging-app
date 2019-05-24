@@ -1,9 +1,10 @@
 import React from 'react'
 import { useAppContext } from './hooks'
 import CreateReaction from './CreateReaction'
+import MessageReactions from './MessageReactions'
 
 export default function MessageBoard() {
-  const { state: { messages } } = useAppContext()
+  const { state: { messages, emojisMap } } = useAppContext()
   return (
     <div>
       {
@@ -15,6 +16,7 @@ export default function MessageBoard() {
               <p>{text}</p>
               <h4>- {username}</h4>
               <CreateReaction messageId={id} />
+              <MessageReactions messageEmojis={emojisMap[id]} />
               <hr />
             </div>
           )
