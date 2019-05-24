@@ -10,3 +10,7 @@ export const setUsername = username => ({
   type: SET_USERNAME,
   username
 })
+
+export const emojiSetter = ({ type, emoji, username, messageId }) => ({
+  type, item: { id: shortid.generate(), timestamp: Date.now(), emoji, username, messageId }
+})
